@@ -17,7 +17,7 @@ namespace Glossary.Controllers
             BulletTrainConfiguration configuration = new BulletTrainConfiguration()
             {
                 ApiUrl = "http://localhost:8000/api/v1/",
-                EnvironmentKey = "nx8GEprrr6gL5t3ckRUCfy"
+                EnvironmentKey = "my-local-env-key"
             };
 
             BulletTrainClient bulletClient = new BulletTrainClient(configuration);
