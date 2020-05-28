@@ -10,6 +10,9 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
+using BulletTrain;
+
+
 
 namespace Glossary
 {
@@ -26,6 +29,11 @@ namespace Glossary
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllers();
+            services.AddSingleton(typeof(BulletTrainClient),new BulletTrainClient(new BulletTrainConfiguration()
+            {
+                ApiUrl = "http://localhost:8000/api/v1/",
+                EnvironmentKey = "nx8GEprrr6gL5t3ckRUCfy"
+            }));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

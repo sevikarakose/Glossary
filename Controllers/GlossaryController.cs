@@ -1,7 +1,6 @@
 using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
-using BulletTrain;
 using Microsoft.AspNetCore.Mvc;
 
 
@@ -14,13 +13,8 @@ namespace Glossary.Controllers
         [HttpGet]
         public async Task<ActionResult<string>> Get()
         {
-            BulletTrainConfiguration configuration = new BulletTrainConfiguration()
-            {
-                ApiUrl = "http://localhost:8000/api/v1/",
-                EnvironmentKey = "my-local-env-key"
-            };
-
-            BulletTrainClient bulletClient = new BulletTrainClient(configuration);
+            var bulletClient = BulletTrain.BulletTrainClient.instance;
+            
             bool featureEnabled = await bulletClient.HasFeatureFlag("show_feature");
             if (featureEnabled)
             {
